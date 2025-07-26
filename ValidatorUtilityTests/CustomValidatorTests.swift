@@ -38,7 +38,7 @@ struct CustomValidatorTests {
             requiresUppercase: true,
             requiresNumber: true,
             requiresSymbol: true
-        ).regex == "^(?!.*\\s)(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*_-+=.,?:]).{8,}$")
+        ).regex == "^(?!.*\\s)(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*_\\-+=.,?:]).{8,}$")
     }
     
     // MARK: - CustomValidator Tests
@@ -721,11 +721,11 @@ struct CustomValidatorTests {
             minLength: 6,
             requiresUppercase: true,
             requiresNumber: true,
-            requiresSymbol: false
+            requiresSymbol: true
         )
         
-        #expect(validator.matchesPattern("Test123", pattern: customPattern))
-        #expect(validator.matchesPattern("Password1", pattern: customPattern))
+        #expect(validator.matchesPattern("Test123!", pattern: customPattern))
+        #expect(validator.matchesPattern("Password1.", pattern: customPattern))
         #expect(!validator.matchesPattern("test123", pattern: customPattern)) // No uppercase
         #expect(!validator.matchesPattern("TestABC", pattern: customPattern)) // No number
     }

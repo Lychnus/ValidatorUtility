@@ -270,7 +270,7 @@ public enum ExtensiveRegexValidatorPattern {
                 var parts: [String] = []
                 if requiresUppercase { parts.append("(?=.*?[A-Z])") }
                 if requiresNumber { parts.append("(?=.*?[0-9])") }
-                if requiresSymbol { parts.append("(?=.*?[!@#$%^&*_-+=.,?:])") }
+                if requiresSymbol { parts.append("(?=.*?[!@#$%^&*_\\-+=.,?:])") }
                 return "^(?!.*\\s)(?=.*?[a-z])" + parts.joined() + ".{\(minLength),}$"
         }
     }
